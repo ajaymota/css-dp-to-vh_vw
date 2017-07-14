@@ -19,22 +19,16 @@ export_path = "../dist"
 
 # Main function for calling converters based on CSS styles
 def process(line):
-    if 'height:' in line and 'dp' in line:
+    if 'height:' in line:
         return convert_dp2vh(line)
 
-    elif 'font-size:' in line and 'dp' in line:
+    elif 'top:' in line or 'bottom:' in line:
         return convert_dp2vh(line)
 
-    elif 'radius:' in line and 'dp' in line:
+    elif 'width:' in line:
         return convert_dp2vw(line)
 
-    elif 'top:' in line and 'dp' in line or 'bottom:' in line and 'dp' in line:
-        return convert_dp2vh(line)
-
-    elif 'width:' in line and 'dp' in line:
-        return convert_dp2vw(line)
-
-    elif 'left:' in line and 'dp' in line or 'right:' in line and 'dp' in line:
+    elif 'left:' in line or 'right:' in line:
         return convert_dp2vw(line)
     else:
         return line
